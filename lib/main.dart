@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_extraiapp/answer.dart';
 import 'package:flutter_extraiapp/question.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var questionIndex = 0;
 
-  Void answerQuestions() {
+  Void _answerQuestions() {
     setState(() {
       questionIndex++;
     });
@@ -40,20 +41,9 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(questions[questionIndex]),
-            MaterialButton(
-              child: Text("Answer 1"),
-              onPressed: () {
-                answerQuestions();
-              },
-            ),
-            MaterialButton(
-              child: Text("Answer 2"),
-              onPressed: answerQuestions,
-            ),
-            MaterialButton(
-              child: Text("Answer 3"),
-              onPressed: answerQuestions,
-            )
+            Answer(_answerQuestions),
+            Answer(_answerQuestions),
+            Answer(_answerQuestions),
           ],
         ),
       ),
